@@ -1,0 +1,129 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #000;
+    font-family: sans-serif;
+}
+
+:root {
+    --purple: #b700ff;
+    --blue: #00ceff;
+}
+
+.container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.purpletriangel,
+.bluetriangel {
+    clip-path: polygon(0 100%, 0% 100%, 0 100%, 51% 10%, 91% 94%, 0 100%, 100% 100%, 51% 0);
+}
+
+.purpletriangel {
+    width: 20rem;
+    height: 20rem;
+    background-color: var(--purple);
+}
+
+.bluetriangel {
+    width: 24rem;
+    height: 24rem;
+    background-color: var(--blue);
+}
+
+.card {
+    position: relative;
+    display: flex;
+    width: 400px;
+    height: 400px;
+    background-color: rgba(255, 255, 255, 0);
+}
+
+.card h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.card p {
+    font-size: 1.2rem;
+    line-height: 2rem;
+}
+
+.card button {
+    position: absolute;
+    padding: 1.2rem;
+    bottom: 3rem;
+    background-color: transparent;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 1rem;
+    transform: skew(-8deg);
+    outline: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    right: 2.5ram;
+    cursor: pointer;
+}
+
+.content {
+    backdrop-filter: blur(10px);
+    z-index: 1;
+    color: #fff;
+    padding: 3rem;
+    border-radius: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    right: 2.5rem;
+    cursor: pointer;
+}
+
+.purplewrapper {
+    position: absolute;
+    right: 10rem;
+    top: -5rem;
+    filter: drop-shadow(0 0 1.2rem var(--purple)) drop-shadow(0 0 4rem var(--purple));
+    transform-origin: center;
+    animation: animateone linear 8s infinite;
+}
+
+@keyframes animateone {
+    0% {
+        transform: scale(1) rotate(0);
+    }
+    10% {
+        transform: rotate(160deg) scale(1.2);
+    }
+}
+
+.bluewrapper {
+    position: absolute;
+    right: -2;
+    top: 2rem;
+    transform: rotate(-45deg);
+    filter: drop-shadow(0 0 1.2rem var(--blue)) drop-shadow(0 0 4rem var(--blue));
+    transform-origin: center;
+    animation: animatetwo 8s infinite;
+}
+
+@keyframes animatetwo {
+    30% {
+        transform: scale(.5) rotate(0);
+    }
+    60% {
+        transform: rotate(-360deg) scale(-1);
+    }
+}
+
+.card:hover .purplewrapper,
+.card:hover .bluewrapper {
+    animation-play-state: paused;
+}
